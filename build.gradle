@@ -1,0 +1,18 @@
+plugins {
+    id 'java'
+
+    id "org.springframework.boot" version "2.1.14.RELEASE"
+}
+
+group 'br.com.murilokakazu.ec7.ftt.cefsa'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.1.14.RELEASE'
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}

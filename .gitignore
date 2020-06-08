@@ -1,0 +1,13 @@
+# project
+classes/
+out/
+build/
+.db/
+
+# intelliJ
+.idea/
+
+# gradle
+.gradle/
+
+.DS_Store

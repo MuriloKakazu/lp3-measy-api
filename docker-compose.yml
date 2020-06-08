@@ -14,18 +14,6 @@ services:
     networks:
       - postgres-network
 
-  postgres-admin:
-    image: dpage/pgadmin4
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@measy.com
-      PGADMIN_DEFAULT_PASSWORD: example1234
-    ports:
-      - 16543:80
-    depends_on:
-      - postgres
-    networks:
-      - postgres-network
-
 networks:
   postgres-network:
     driver: bridge

@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/measy?${custom.jdbc.options}
+    username: admin
+    password: example1234
+    driver-class-name:
+    hikari:
+      maximum-pool-size: 10
+      connection-timeout: 2500
+      max-lifetime: 250000

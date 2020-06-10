@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.UUID;
 
 @MappedSuperclass
-public class BaseEntity implements Serializable {
+public abstract class BaseEntity implements Serializable {
     @Id
     @GeneratedValue
     private UUID id;

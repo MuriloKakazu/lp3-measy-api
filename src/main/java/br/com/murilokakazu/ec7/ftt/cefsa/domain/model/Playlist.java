@@ -1,28 +1,30 @@
 package br.com.murilokakazu.ec7.ftt.cefsa.domain.model;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import java.util.UUID;
 
-public class Playlist {
-    @Column(name="artist_id")
-    private UUID artistId;
+@Entity
+public class Playlist extends BaseEntity {
+    @Column(name="owner_id")
+    private UUID ownerId;
 
-    @Column(name="album_id")
-    private UUID albumId;
+    @Column(name="image_url")
+    private String imageUrl;
 
-    public UUID getArtistId() {
-        return artistId;
+    public UUID getOwnerId() {
+        return ownerId;
     }
 
-    public void setArtistId(UUID artistId) {
-        this.artistId = artistId;
+    public void setOwnerId(UUID ownerId) {
+        this.ownerId = ownerId;
     }
 
-    public UUID getAlbumId() {
-        return albumId;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setAlbumId(UUID albumId) {
-        this.albumId = albumId;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

@@ -18,6 +18,7 @@ dependencies {
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa'
     compile group: 'org.postgresql', name: 'postgresql'
     compile group: 'com.zaxxer', name: 'HikariCP'
+    compile group: 'com.vladmihalcea', name: 'hibernate-types-52', version: '2.4.3'
     compile group: 'javax.xml.bind', name: 'jaxb-api'
 
     testCompile group: 'junit', name: 'junit', version: '4.12'

@@ -5,7 +5,10 @@ import br.com.murilokakazu.ec7.ftt.cefsa.domain.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
+
+import static br.com.murilokakazu.ec7.ftt.cefsa.domain.specifications.AccountSpecifications.bySpecifications;
 
 @RestController
 @RequestMapping(value = "/v1")
@@ -17,6 +20,11 @@ public class AccountRestResource {
   @GetMapping("/account/{id}")
   public Account getById(@PathVariable(value = "id") UUID id) {
     return accountRepository.findById(id).get();
+  }
+
+  @GetMapping("/accounts")
+  public List<Account> search(Account prototype) {
+    return accountRepository.findAll(bySpecifications(prototype));
   }
 
   @PostMapping("/account")

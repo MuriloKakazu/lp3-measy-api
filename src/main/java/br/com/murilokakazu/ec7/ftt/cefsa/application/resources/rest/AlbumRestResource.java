@@ -30,6 +30,11 @@ public class AlbumRestResource {
         return albumRepository.findAll(where(artistIdEquals(artistId)));
     }
 
+    @GetMapping("/albums")
+    public List<Album> search(Album prototype) {
+        return albumRepository.findAll(bySpecifications(prototype));
+    }
+
     @PostMapping("/album")
     public Album post(@RequestBody Album album) {
         return albumRepository.save(album);

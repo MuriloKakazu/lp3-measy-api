@@ -8,22 +8,22 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @RestController
-@RequestMapping(value = "/v1/tracks")
+@RequestMapping(value = "/v1")
 public class TrackRestResource {
     @Autowired
     private TrackRepository trackRepository;
 
-    @GetMapping("/{id}")
+    @GetMapping("/track/{id}")
     public Track getById(@PathVariable(value = "id") UUID id) {
         return trackRepository.findById(id).get();
     }
 
-    @PostMapping
-    public Track create(@RequestBody Track track) {
+    @PostMapping("/track")
+    public Track post(@RequestBody Track track) {
         return trackRepository.save(track);
     }
 
-    @PutMapping
+    @PutMapping("/track")
     public Track put(@RequestBody Track track) {
         return trackRepository.save(track);
     }

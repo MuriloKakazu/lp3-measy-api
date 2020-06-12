@@ -9,22 +9,22 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @RestController
-@RequestMapping(value = "/v1/artists")
+@RequestMapping(value = "/v1")
 public class ArtistRestResource {
     @Autowired
     private ArtistRepository artistRepository;
 
-    @GetMapping("/{id}")
+    @GetMapping("/artist/{id}")
     public Artist getById(@PathVariable(value = "id") UUID id) {
         return artistRepository.findById(id).get();
     }
 
-    @PostMapping
-    public Artist create(@RequestBody Artist artist) {
+    @PostMapping("/artist")
+    public Artist post(@RequestBody Artist artist) {
         return artistRepository.save(artist);
     }
 
-    @PutMapping
+    @PutMapping("/artist")
     public Artist put(@RequestBody Artist artist) {
         return artistRepository.save(artist);
     }

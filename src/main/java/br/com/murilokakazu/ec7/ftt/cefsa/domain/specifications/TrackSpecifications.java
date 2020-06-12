@@ -11,5 +11,4 @@ public class TrackSpecifications {
     public static Specification<Track> albumIdEquals(UUID albumId) {
         return (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get(Track_.albumId), albumId);
     }
-
 }

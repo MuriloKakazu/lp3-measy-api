@@ -24,8 +24,8 @@ public class TrackRestResource {
         return trackRepository.findById(id).get();
     }
 
-    @GetMapping(path = "/albums/{id}/tracks")
-    public List<Track> getByArtistId(@PathVariable(value = "id") UUID albumId) {
+    @GetMapping(path = "/album/{id}/tracks")
+    public List<Track> getByAlbumId(@PathVariable(value = "id") UUID albumId) {
         return trackRepository.findAll(where(albumIdEquals(albumId)));
     }
 

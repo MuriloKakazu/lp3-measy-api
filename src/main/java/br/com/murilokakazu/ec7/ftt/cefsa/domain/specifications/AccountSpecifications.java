@@ -14,14 +14,14 @@ import static java.util.stream.Collectors.toList;
 public class AccountSpecifications {
 
     public static Specification<Account> bySpecifications(Account prototype) {
-        List<Specification> specifications = new ArrayList<>(2);
+        List<Specification> specifications = new ArrayList<>();
 
         if (prototype.getId() != null) {
             specifications.add(idEquals(prototype.getId()));
         }
 
         if (prototype.getName() != null) {
-            specifications.add(nameEquals(prototype.getName()));
+            specifications.add(nameLike(prototype.getName()));
         }
 
         if (prototype.getEmail() != null) {
@@ -40,8 +40,9 @@ public class AccountSpecifications {
         return (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get(Account_.ID), id);
     }
 
-    public static Specification<Account> nameEquals(String name) {
-        return (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get(Account_.NAME), name);
+    public static Specification<Account> nameLike(String name) {
+        return (root, query, criteriaBuilder) -> criteriaBuilder.like(
+                criteriaBuilder.lower(root.get(Account_.NAME)), '%' + name.toLowerCase() + '%');
     }
 
     public static Specification<Account> emailEquals(String email) {

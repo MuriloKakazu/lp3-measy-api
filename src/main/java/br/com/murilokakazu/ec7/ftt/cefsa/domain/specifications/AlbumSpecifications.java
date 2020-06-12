@@ -1,7 +1,5 @@
 package br.com.murilokakazu.ec7.ftt.cefsa.domain.specifications;
 
-import br.com.murilokakazu.ec7.ftt.cefsa.domain.model.Account;
-import br.com.murilokakazu.ec7.ftt.cefsa.domain.model.Account_;
 import br.com.murilokakazu.ec7.ftt.cefsa.domain.model.Album;
 import br.com.murilokakazu.ec7.ftt.cefsa.domain.model.Album_;
 import org.springframework.data.jpa.domain.Specification;
@@ -17,7 +15,7 @@ import static java.util.stream.Collectors.toList;
 public class AlbumSpecifications {
 
     public static Specification<Album> bySpecifications(Album prototype) {
-        List<Specification> specifications = new ArrayList<>(2);
+        List<Specification> specifications = new ArrayList<>();
 
         if (prototype.getId() != null) {
             specifications.add(idEquals(prototype.getId()));
@@ -28,7 +26,7 @@ public class AlbumSpecifications {
         }
 
         if (prototype.getName() != null) {
-            specifications.add(nameEquals(prototype.getName()));
+            specifications.add(nameLike(prototype.getName()));
         }
 
         if (prototype.getReleaseDate() != null) {
@@ -47,16 +45,17 @@ public class AlbumSpecifications {
         return (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get(Album_.ID), id);
     }
 
-    public static Specification<Album> nameEquals(String name) {
-        return (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get(Album_.NAME), name);
+    public static Specification<Album> artistIdEquals(UUID artistId) {
+        return (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get(Album_.artistId), artistId);
+    }
+
+    public static Specification<Album> nameLike(String name) {
+        return (root, query, criteriaBuilder) -> criteriaBuilder.like(
+                criteriaBuilder.lower(root.get(Album_.NAME)), '%' + name.toLowerCase() + '%');
     }
 
     public static Specification<Album> releaseDateEquals(OffsetDateTime releaseDate) {
         return (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get(Album_.RELEASE_DATE), releaseDate);
-    }
-
-    public static Specification<Album> artistIdEquals(UUID artistId) {
-        return (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get(Album_.artistId), artistId);
     }
 
 }

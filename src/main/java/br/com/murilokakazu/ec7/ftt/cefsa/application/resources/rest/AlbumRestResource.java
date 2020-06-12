@@ -25,7 +25,7 @@ public class AlbumRestResource {
         return albumRepository.findById(id).get();
     }
 
-    @GetMapping(path = "/artist/{id}/albums")
+    @GetMapping("/artist/{id}/albums")
     public List<Album> getByArtistId(@PathVariable(value = "id") UUID artistId) {
         return albumRepository.findAll(where(artistIdEquals(artistId)));
     }

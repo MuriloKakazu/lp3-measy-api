@@ -1,6 +1,5 @@
 package br.com.murilokakazu.ec7.ftt.cefsa.domain.specifications;
 
-import br.com.murilokakazu.ec7.ftt.cefsa.domain.model.Account;
 import br.com.murilokakazu.ec7.ftt.cefsa.domain.model.Track;
 import br.com.murilokakazu.ec7.ftt.cefsa.domain.model.Track_;
 import org.springframework.data.jpa.domain.Specification;

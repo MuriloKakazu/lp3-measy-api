@@ -2,9 +2,7 @@ package br.com.murilokakazu.ec7.ftt.cefsa.application.resources.rest;
 
 import br.com.murilokakazu.ec7.ftt.cefsa.domain.model.Album;
 import br.com.murilokakazu.ec7.ftt.cefsa.domain.repository.AlbumRepository;
-import br.com.murilokakazu.ec7.ftt.cefsa.domain.specifications.AlbumSpecifications;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

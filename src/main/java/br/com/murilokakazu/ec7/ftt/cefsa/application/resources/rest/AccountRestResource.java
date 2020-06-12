@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
-import static br.com.murilokakazu.ec7.ftt.cefsa.domain.specifications.AccountSpecifications.bySpecifications;
+import static br.com.murilokakazu.ec7.ftt.cefsa.domain.specifications.AccountSpecifications.*;
 
 @RestController
 @RequestMapping(value = "/v1")

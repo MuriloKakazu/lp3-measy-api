@@ -15,14 +15,13 @@ import java.time.OffsetDateTime;
 import java.util.Set;
 import java.util.UUID;
 
-
 @Entity
 @TypeDef(
         name = "string-array",
         typeClass = StringArrayType.class
 )
 public class Album extends BaseEntity {
-    @Column(name="artist_id")
+    @Column(name = "artist_id")
     private UUID artistId;
 
     @Type(type="string-array")

@@ -2,29 +2,40 @@ package br.com.murilokakazu.ec7.ftt.cefsa.application.resources.rest;
 
 import br.com.murilokakazu.ec7.ftt.cefsa.domain.model.Album;
 import br.com.murilokakazu.ec7.ftt.cefsa.domain.repository.AlbumRepository;
+import br.com.murilokakazu.ec7.ftt.cefsa.domain.specifications.AlbumSpecifications;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
+import static org.springframework.data.jpa.domain.Specification.*;
+import static br.com.murilokakazu.ec7.ftt.cefsa.domain.specifications.AlbumSpecifications.*;
+
 @RestController
-@RequestMapping(value = "/v1/albums")
+@RequestMapping(path = "/v1")
 public class AlbumRestResource {
 
     @Autowired
     private AlbumRepository albumRepository;
 
-    @GetMapping("/{id}")
+    @GetMapping("/album/{id}")
     public Album getById(@PathVariable(value = "id") UUID id) {
         return albumRepository.findById(id).get();
     }
 
-    @PostMapping
-    public Album create(@RequestBody Album album) {
+    @GetMapping(path = "/artist/{id}/albums")
+    public List<Album> getByArtistId(@PathVariable(value = "id") UUID artistId) {
+        return albumRepository.findAll(where(artistIdEquals(artistId)));
+    }
+
+    @PostMapping("/album")
+    public Album post(@RequestBody Album album) {
         return albumRepository.save(album);
     }
 
-    @PutMapping
+    @PutMapping("/album")
     public Album put(@RequestBody Album album) {
         return albumRepository.save(album);
     }

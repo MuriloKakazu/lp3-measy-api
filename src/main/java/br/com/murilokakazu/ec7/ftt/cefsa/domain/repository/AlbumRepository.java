@@ -1,6 +1,5 @@
 package br.com.murilokakazu.ec7.ftt.cefsa.domain.repository;
 
-import br.com.murilokakazu.ec7.ftt.cefsa.domain.model.Account;
 import br.com.murilokakazu.ec7.ftt.cefsa.domain.model.Album;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;

@@ -3,6 +3,7 @@ classes/
 out/
 build/
 .db/
+src/generated/
 
 # intelliJ
 .idea/

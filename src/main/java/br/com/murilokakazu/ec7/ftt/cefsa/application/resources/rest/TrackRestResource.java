@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.UUID;
 
 import static br.com.murilokakazu.ec7.ftt.cefsa.domain.specifications.TrackSpecifications.albumIdEquals;
+import static br.com.murilokakazu.ec7.ftt.cefsa.domain.specifications.TrackSpecifications.bySpecifications;
 import static org.springframework.data.jpa.domain.Specification.where;
 
 @RestController
@@ -18,15 +19,19 @@ public class TrackRestResource {
     @Autowired
     private TrackRepository trackRepository;
 
-
     @GetMapping("/track/{id}")
     public Track getById(@PathVariable(value = "id") UUID id) {
         return trackRepository.findById(id).get();
     }
 
-    @GetMapping(path = "/album/{id}/tracks")
+    @GetMapping(path="/album/{id}/tracks")
     public List<Track> getByAlbumId(@PathVariable(value = "id") UUID albumId) {
         return trackRepository.findAll(where(albumIdEquals(albumId)));
+    }
+
+    @GetMapping(path="/tracks")
+    public List<Track> search(Track prototype){
+        return trackRepository.findAll(bySpecifications(prototype));
     }
 
     @PostMapping("/track")

@@ -1,6 +1,8 @@
 package br.com.murilokakazu.ec7.ftt.cefsa.domain.model;
 
 import com.vladmihalcea.hibernate.type.array.StringArrayType;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 
@@ -28,8 +30,9 @@ public class Artist extends BaseEntity {
 
     @OneToMany(
             mappedBy="artistId",
-            fetch= FetchType.LAZY
+            fetch= FetchType.EAGER
     )
+    @Fetch(FetchMode.SELECT)
     private List<Album> albums = new ArrayList<>();
 
     public String[] getGenre() {

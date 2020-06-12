@@ -1,5 +1,8 @@
 package br.com.murilokakazu.ec7.ftt.cefsa.domain.model;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
@@ -16,6 +19,7 @@ public class Account extends BaseEntity {
             mappedBy="ownerId",
             fetch= FetchType.EAGER
     )
+    @Fetch(FetchMode.SELECT)
     private List<Playlist> playlists = new ArrayList<>();
 
     public String getEmail() {

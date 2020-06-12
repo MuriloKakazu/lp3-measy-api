@@ -1,11 +1,10 @@
 package br.com.murilokakazu.ec7.ftt.cefsa.domain.model;
 
 import com.vladmihalcea.hibernate.type.array.StringArrayType;
-import org.hibernate.annotations.Type;
-import org.hibernate.annotations.TypeDef;
-import org.hibernate.annotations.TypeDefs;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import java.time.DateTimeException;
@@ -41,6 +40,7 @@ public class Album extends BaseEntity {
             mappedBy="albumId",
             fetch=FetchType.EAGER
     )
+    @Fetch(FetchMode.SELECT)
     private List<Track> tracks = new ArrayList<>();
 
     public Integer getPopularity() {

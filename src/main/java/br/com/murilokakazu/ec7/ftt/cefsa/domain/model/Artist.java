@@ -4,10 +4,11 @@ import com.vladmihalcea.hibernate.type.array.StringArrayType;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @TypeDef(
@@ -24,6 +25,12 @@ public class Artist extends BaseEntity {
 
     @Column(name="image_url")
     private String imageUrl;
+
+    @OneToMany(
+            mappedBy="artistId",
+            fetch= FetchType.LAZY
+    )
+    private List<Album> albums = new ArrayList<>();
 
     public String[] getGenre() {
         return genre;
@@ -47,5 +54,13 @@ public class Artist extends BaseEntity {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public List<Album> getAlbums() {
+        return albums;
+    }
+
+    public void setAlbums(List<Album> albums) {
+        this.albums = albums;
     }
 }

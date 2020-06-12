@@ -5,13 +5,13 @@ import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 import org.hibernate.annotations.TypeDefs;
 
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import java.time.DateTimeException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -36,6 +36,12 @@ public class Album extends BaseEntity {
 
     @Column(name="release_date")
     private OffsetDateTime releaseDate;
+
+    @OneToMany(
+            mappedBy="albumId",
+            fetch=FetchType.EAGER
+    )
+    private List<Track> tracks = new ArrayList<>();
 
     public Integer getPopularity() {
         return popularity;
@@ -75,5 +81,13 @@ public class Album extends BaseEntity {
 
     public void setArtistId(UUID artistId) {
         this.artistId = artistId;
+    }
+
+    public List<Track> getTracks() {
+        return tracks;
+    }
+
+    public void setTracks(List<Track> tracks) {
+        this.tracks = tracks;
     }
 }

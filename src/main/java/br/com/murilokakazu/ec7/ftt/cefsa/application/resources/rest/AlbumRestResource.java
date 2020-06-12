@@ -1,6 +1,7 @@
 package br.com.murilokakazu.ec7.ftt.cefsa.application.resources.rest;
 
 import br.com.murilokakazu.ec7.ftt.cefsa.domain.model.Album;
+import br.com.murilokakazu.ec7.ftt.cefsa.domain.model.Album_;
 import br.com.murilokakazu.ec7.ftt.cefsa.domain.repository.AlbumRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
+import static br.com.murilokakazu.ec7.ftt.cefsa.domain.specifications.SpecificationsHelper.isEqual;
 import static org.springframework.data.jpa.domain.Specification.*;
 import static br.com.murilokakazu.ec7.ftt.cefsa.domain.specifications.AlbumSpecifications.*;
 
@@ -25,7 +27,7 @@ public class AlbumRestResource {
 
     @GetMapping("/artist/{id}/albums")
     public List<Album> getByArtistId(@PathVariable(value = "id") UUID artistId) {
-        return albumRepository.findAll(where(artistIdEquals(artistId)));
+        return albumRepository.findAll(where(isEqual(Album_.ARTIST_ID, artistId)));
     }
 
     @GetMapping("/albums")

@@ -1,6 +1,7 @@
 package br.com.murilokakazu.ec7.ftt.cefsa.application.resources.rest;
 
 import br.com.murilokakazu.ec7.ftt.cefsa.domain.model.Track;
+import br.com.murilokakazu.ec7.ftt.cefsa.domain.model.Track_;
 import br.com.murilokakazu.ec7.ftt.cefsa.domain.repository.TrackRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
+import static br.com.murilokakazu.ec7.ftt.cefsa.domain.specifications.SpecificationsHelper.isEqual;
 import static br.com.murilokakazu.ec7.ftt.cefsa.domain.specifications.TrackSpecifications.*;
 import static org.springframework.data.jpa.domain.Specification.*;
 
@@ -24,7 +26,7 @@ public class TrackRestResource {
 
     @GetMapping("/album/{id}/tracks")
     public List<Track> getByAlbumId(@PathVariable(value = "id") UUID albumId) {
-        return trackRepository.findAll(where(albumIdEquals(albumId)));
+        return trackRepository.findAll(where(isEqual(Track_.ALBUM_ID, albumId)));
     }
 
     @GetMapping(path="/tracks")

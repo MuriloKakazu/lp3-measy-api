@@ -18,7 +18,8 @@ public class TrackRestResource {
     @Autowired
     private TrackRepository trackRepository;
 
-    @GetMapping("/tracks/{id}")
+
+    @GetMapping("/track/{id}")
     public Track getById(@PathVariable(value = "id") UUID id) {
         return trackRepository.findById(id).get();
     }
@@ -28,12 +29,12 @@ public class TrackRestResource {
         return trackRepository.findAll(where(albumIdEquals(albumId)));
     }
 
-    @PostMapping
-    public Track create(@RequestBody Track track) {
+    @PostMapping("/track")
+    public Track post(@RequestBody Track track) {
         return trackRepository.save(track);
     }
 
-    @PutMapping
+    @PutMapping("/track")
     public Track put(@RequestBody Track track) {
         return trackRepository.save(track);
     }

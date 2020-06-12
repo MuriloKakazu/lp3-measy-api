@@ -8,22 +8,22 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @RestController
-@RequestMapping(value = "/v1/playlist-entries")
+@RequestMapping(value = "/v1")
 public class PlaylistEntryRestResource {
     @Autowired
     private PlaylistEntryRepository playlistEntryRepository;
 
-    @GetMapping("/{id}")
+    @GetMapping("/playlist-entry/{id}")
     public PlaylistEntry getById(@PathVariable(value = "id") UUID id) {
         return playlistEntryRepository.findById(id).get();
     }
 
-    @PostMapping
-    public PlaylistEntry create(@RequestBody PlaylistEntry playlistEntry) {
+    @PostMapping("/playlist-entry")
+    public PlaylistEntry post(@RequestBody PlaylistEntry playlistEntry) {
         return playlistEntryRepository.save(playlistEntry);
     }
 
-    @PutMapping
+    @PutMapping("/playlist-entry")
     public PlaylistEntry put(@RequestBody PlaylistEntry playlistEntry) {
         return playlistEntryRepository.save(playlistEntry);
     }

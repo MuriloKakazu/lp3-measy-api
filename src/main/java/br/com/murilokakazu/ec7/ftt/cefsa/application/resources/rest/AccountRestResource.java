@@ -8,23 +8,23 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @RestController
-@RequestMapping(value = "/v1/accounts")
+@RequestMapping(value = "/v1")
 public class AccountRestResource {
 
   @Autowired
   private AccountRepository accountRepository;
 
-  @GetMapping("/{id}")
+  @GetMapping("/account/{id}")
   public Account getById(@PathVariable(value = "id") UUID id) {
     return accountRepository.findById(id).get();
   }
 
-  @PostMapping
-  public Account create(@RequestBody Account account) {
+  @PostMapping("/account")
+  public Account post(@RequestBody Account account) {
     return accountRepository.save(account);
   }
 
-  @PutMapping
+  @PutMapping("/account")
   public Account put(@RequestBody Account account) {
     return accountRepository.save(account);
   }

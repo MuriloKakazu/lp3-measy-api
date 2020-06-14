@@ -22,7 +22,7 @@ public class ArtistRestResource {
     }
 
     @GetMapping("/artists")
-    public List<Artist> search(Artist prototype) {
+    public List<Artist> searchBySpecifications(Artist prototype) {
         return artistRepository.findAll(bySpecifications(prototype));
     }
 

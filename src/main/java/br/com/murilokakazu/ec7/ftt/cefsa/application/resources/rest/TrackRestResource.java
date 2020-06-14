@@ -30,7 +30,7 @@ public class TrackRestResource {
     }
 
     @GetMapping(path="/tracks")
-    public List<Track> search(Track prototype){
+    public List<Track> searchBySpecifications(Track prototype){
         return trackRepository.findAll(bySpecifications(prototype));
     }
 

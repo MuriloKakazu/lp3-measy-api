@@ -31,7 +31,7 @@ public class AlbumRestResource {
     }
 
     @GetMapping("/albums")
-    public List<Album> search(Album prototype) {
+    public List<Album> searchBySpecifications(Album prototype) {
         return albumRepository.findAll(bySpecifications(prototype));
     }
 

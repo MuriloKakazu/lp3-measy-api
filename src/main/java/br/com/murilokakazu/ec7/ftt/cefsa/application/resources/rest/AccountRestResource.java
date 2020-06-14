@@ -23,7 +23,7 @@ public class AccountRestResource {
   }
 
   @GetMapping("/accounts")
-  public List<Account> search(Account prototype) {
+  public List<Account> searchBySpecifications(Account prototype) {
     return accountRepository.findAll(bySpecifications(prototype));
   }
 

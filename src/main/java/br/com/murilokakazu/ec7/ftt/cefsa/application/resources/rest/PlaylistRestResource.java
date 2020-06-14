@@ -30,7 +30,7 @@ public class PlaylistRestResource {
     }
 
     @GetMapping("/playlists")
-    public List<Playlist> search(Playlist prototype) {
+    public List<Playlist> searchBySpecifications(Playlist prototype) {
         return playlistRepository.findAll(bySpecifications(prototype));
     }
 

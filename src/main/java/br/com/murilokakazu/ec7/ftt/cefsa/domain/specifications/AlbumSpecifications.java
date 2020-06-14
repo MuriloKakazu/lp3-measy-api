@@ -17,20 +17,21 @@ public class AlbumSpecifications {
         if (prototype.getId() != null) {
             specifications.add(isFieldEqual(Album_.ID, prototype.getId()));
         }
-
         if (prototype.getArtistId() != null) {
             specifications.add(isFieldEqual(Album_.ARTIST_ID, prototype.getArtistId()));
         }
-
         if (prototype.getName() != null) {
             specifications.add(isFieldEqual(Album_.NAME, prototype.getName()));
         }
-
         if (prototype.getReleaseDate() != null) {
             specifications.add(isFieldEqual(Album_.RELEASE_DATE, prototype.getReleaseDate()));
         }
 
         return satisfyingAll(specifications);
+    }
+
+    public static Specification<Album> matching(String query) {
+        return fieldContains(Album_.NAME, query);
     }
 
 }

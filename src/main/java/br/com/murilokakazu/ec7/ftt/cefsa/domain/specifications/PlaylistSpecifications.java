@@ -16,15 +16,17 @@ public class PlaylistSpecifications {
         if (prototype.getId() != null) {
             specifications.add(isFieldEqual(Playlist_.ID, prototype.getId()));
         }
-
         if (prototype.getOwnerId() != null) {
             specifications.add(isFieldEqual(Playlist_.OWNER_ID, prototype.getOwnerId()));
         }
-
         if (prototype.getName() != null) {
             specifications.add(isFieldEqual(Playlist_.NAME, prototype.getName()));
         }
 
         return satisfyingAll(specifications);
+    }
+
+    public static Specification<Playlist> matching(String query) {
+        return fieldContains(Playlist_.NAME, query);
     }
 }

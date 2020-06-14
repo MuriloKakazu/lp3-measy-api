@@ -17,11 +17,9 @@ public class AccountSpecifications {
         if (prototype.getId() != null) {
             specifications.add(isFieldEqual(Account_.ID, prototype.getId()));
         }
-
         if (prototype.getName() != null) {
             specifications.add(isFieldEqual(Account_.NAME, prototype.getName()));
         }
-
         if (prototype.getEmail() != null) {
             specifications.add(isFieldEqual(Account_.EMAIL, prototype.getEmail()));
         }

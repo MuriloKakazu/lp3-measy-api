@@ -17,12 +17,15 @@ public class ArtistSpecifications {
         if (prototype.getId() != null) {
             specifications.add(isFieldEqual(Artist_.ID, prototype.getId()));
         }
-
         if (prototype.getName() != null) {
             specifications.add(isFieldEqual(Artist_.NAME, prototype.getName()));
         }
 
         return satisfyingAll(specifications);
+    }
+
+    public static Specification<Artist> matching(String query) {
+        return fieldContains(Artist_.NAME, query);
     }
 
 }

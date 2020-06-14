@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
-import static br.com.murilokakazu.ec7.ftt.cefsa.domain.specifications.SpecificationsHelper.isFieldEqual;
+import static br.com.murilokakazu.ec7.ftt.cefsa.domain.specifications.SpecificationsHelper.*;
 import static br.com.murilokakazu.ec7.ftt.cefsa.domain.specifications.TrackSpecifications.*;
 import static org.springframework.data.jpa.domain.Specification.*;
 
@@ -27,6 +27,11 @@ public class TrackRestResource {
     @GetMapping("/album/{id}/tracks")
     public List<Track> getByAlbumId(@PathVariable(value = "id") UUID albumId) {
         return trackRepository.findAll(where(isFieldEqual(Track_.ALBUM_ID, albumId)));
+    }
+
+    @GetMapping("/tracks/search")
+    public List<Track> search(@RequestParam(value = "q") String query) {
+        return trackRepository.findAll(matching(query));
     }
 
     @GetMapping(path="/tracks")

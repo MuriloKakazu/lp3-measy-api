@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
-import static br.com.murilokakazu.ec7.ftt.cefsa.domain.specifications.SpecificationsHelper.isFieldEqual;
+import static br.com.murilokakazu.ec7.ftt.cefsa.domain.specifications.SpecificationsHelper.*;
 import static org.springframework.data.jpa.domain.Specification.*;
 import static br.com.murilokakazu.ec7.ftt.cefsa.domain.specifications.AlbumSpecifications.*;
 
@@ -33,6 +33,11 @@ public class AlbumRestResource {
     @GetMapping("/albums")
     public List<Album> searchBySpecifications(Album prototype) {
         return albumRepository.findAll(matching(prototype));
+    }
+
+    @GetMapping("/albums/search")
+    public List<Album> search(@RequestParam(value = "q") String query) {
+        return albumRepository.findAll(matching(query));
     }
 
     @PostMapping("/album")

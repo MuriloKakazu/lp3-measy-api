@@ -26,6 +26,11 @@ public class ArtistRestResource {
         return artistRepository.findAll(matching(prototype));
     }
 
+    @GetMapping("/artists/search")
+    public List<Artist> search(@RequestParam(value = "q") String query) {
+        return artistRepository.findAll(matching(query));
+    }
+
     @PostMapping("/artist")
     public Artist post(@RequestBody Artist artist) {
         return artistRepository.save(artist);

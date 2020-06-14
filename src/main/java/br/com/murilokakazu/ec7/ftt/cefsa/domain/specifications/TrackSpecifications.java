@@ -29,4 +29,8 @@ public class TrackSpecifications {
 
         return satisfyingAll(specifications);
     }
+
+    public static Specification<Track> matching (String query) {
+        return fieldContains(Track_.NAME, query);
+    }
 }

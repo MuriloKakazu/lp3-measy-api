@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.UUID;
 
 import static br.com.murilokakazu.ec7.ftt.cefsa.domain.specifications.PlaylistSpecifications.*;
-import static br.com.murilokakazu.ec7.ftt.cefsa.domain.specifications.SpecificationsHelper.isFieldEqual;
+import static br.com.murilokakazu.ec7.ftt.cefsa.domain.specifications.SpecificationsHelper.*;
 import static org.springframework.data.jpa.domain.Specification.*;
 
 @RestController
@@ -32,6 +32,11 @@ public class PlaylistRestResource {
     @GetMapping("/playlists")
     public List<Playlist> searchBySpecifications(Playlist prototype) {
         return playlistRepository.findAll(matching(prototype));
+    }
+
+    @GetMapping("/playlist/search")
+    public List<Playlist> search(@RequestParam(value = "q") String query) {
+        return playlistRepository.findAll(matching(query));
     }
 
     @PostMapping("/playlist")

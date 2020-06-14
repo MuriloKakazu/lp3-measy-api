@@ -11,14 +11,14 @@ import static br.com.murilokakazu.ec7.ftt.cefsa.domain.specifications.Specificat
 
 public class TrackSpecifications {
 
-    public static Specification<Track> bySpecifications(Track prototype) {
+    public static Specification<Track> matching(Track prototype) {
         List<Specification<Track>> specifications = new ArrayList<>();
 
         if (prototype.getId() != null) {
             specifications.add(isEqual(Track_.ID, prototype.getId()));
         }
         if (prototype.getName() != null) {
-            specifications.add(containsCaseInsensitive(Track_.NAME, prototype.getName()));
+            specifications.add(isEqual(Track_.NAME, prototype.getName()));
         }
         if (prototype.getAlbumId() != null) {
             specifications.add(isEqual(Track_.ALBUM_ID, prototype.getAlbumId()));

@@ -32,7 +32,7 @@ public class AlbumRestResource {
 
     @GetMapping("/albums")
     public List<Album> searchBySpecifications(Album prototype) {
-        return albumRepository.findAll(bySpecifications(prototype));
+        return albumRepository.findAll(matching(prototype));
     }
 
     @PostMapping("/album")

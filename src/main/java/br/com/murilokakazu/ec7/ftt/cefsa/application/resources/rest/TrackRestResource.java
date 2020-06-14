@@ -31,7 +31,7 @@ public class TrackRestResource {
 
     @GetMapping(path="/tracks")
     public List<Track> searchBySpecifications(Track prototype){
-        return trackRepository.findAll(bySpecifications(prototype));
+        return trackRepository.findAll(matching(prototype));
     }
 
     @PostMapping("/track")

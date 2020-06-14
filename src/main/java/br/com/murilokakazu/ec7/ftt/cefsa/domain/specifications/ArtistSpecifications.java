@@ -11,7 +11,7 @@ import static br.com.murilokakazu.ec7.ftt.cefsa.domain.specifications.Specificat
 
 public class ArtistSpecifications {
 
-    public static Specification<Artist> bySpecifications(Artist prototype) {
+    public static Specification<Artist> matching(Artist prototype) {
         List<Specification<Artist>> specifications = new ArrayList<>();
 
         if (prototype.getId() != null) {
@@ -19,7 +19,7 @@ public class ArtistSpecifications {
         }
 
         if (prototype.getName() != null) {
-            specifications.add(containsCaseInsensitive(Artist_.NAME, prototype.getName()));
+            specifications.add(isEqual(Artist_.NAME, prototype.getName()));
         }
 
         return joinSpecifications(specifications);

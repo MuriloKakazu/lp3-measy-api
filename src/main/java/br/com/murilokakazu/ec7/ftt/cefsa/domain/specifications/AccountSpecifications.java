@@ -11,7 +11,7 @@ import static br.com.murilokakazu.ec7.ftt.cefsa.domain.specifications.Specificat
 
 public class AccountSpecifications {
 
-    public static Specification<Account> bySpecifications(Account prototype) {
+    public static Specification<Account> matching(Account prototype) {
         List<Specification<Account>> specifications = new ArrayList<>();
 
         if (prototype.getId() != null) {
@@ -19,14 +19,18 @@ public class AccountSpecifications {
         }
 
         if (prototype.getName() != null) {
-            specifications.add(containsCaseInsensitive(Account_.NAME, prototype.getName()));
+            specifications.add(isEqual(Account_.NAME, prototype.getName()));
         }
 
         if (prototype.getEmail() != null) {
             specifications.add(isEqual(Account_.EMAIL, prototype.getEmail()));
         }
 
-        return SpecificationsHelper.joinSpecifications(specifications);
+        return joinSpecifications(specifications);
+    }
+
+    public static Specification<Account> matching(String query) {
+        return containsCaseInsensitive(Account_.NAME, query);
     }
 
 }

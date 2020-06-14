@@ -31,7 +31,7 @@ public class PlaylistRestResource {
 
     @GetMapping("/playlists")
     public List<Playlist> searchBySpecifications(Playlist prototype) {
-        return playlistRepository.findAll(bySpecifications(prototype));
+        return playlistRepository.findAll(matching(prototype));
     }
 
     @PostMapping("/playlist")

@@ -24,7 +24,12 @@ public class AccountRestResource {
 
   @GetMapping("/accounts")
   public List<Account> searchBySpecifications(Account prototype) {
-    return accountRepository.findAll(bySpecifications(prototype));
+    return accountRepository.findAll(matching(prototype));
+  }
+
+  @GetMapping("/accounts/search")
+  public List<Account> search(@RequestParam(value = "q") String q) {
+    return accountRepository.findAll(matching(q));
   }
 
   @PostMapping("/account")

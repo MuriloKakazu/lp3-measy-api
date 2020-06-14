@@ -11,7 +11,7 @@ import static br.com.murilokakazu.ec7.ftt.cefsa.domain.specifications.Specificat
 
 public class AlbumSpecifications {
 
-    public static Specification<Album> bySpecifications(Album prototype) {
+    public static Specification<Album> matching(Album prototype) {
         List<Specification<Album>> specifications = new ArrayList<>();
 
         if (prototype.getId() != null) {
@@ -23,7 +23,7 @@ public class AlbumSpecifications {
         }
 
         if (prototype.getName() != null) {
-            specifications.add(containsCaseInsensitive(Album_.NAME, prototype.getName()));
+            specifications.add(isEqual(Album_.NAME, prototype.getName()));
         }
 
         if (prototype.getReleaseDate() != null) {

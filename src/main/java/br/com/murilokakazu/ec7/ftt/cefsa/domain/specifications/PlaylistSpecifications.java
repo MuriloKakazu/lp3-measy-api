@@ -10,7 +10,7 @@ import static br.com.murilokakazu.ec7.ftt.cefsa.domain.specifications.Specificat
 
 public class PlaylistSpecifications {
 
-    public static Specification<Playlist> bySpecifications(Playlist prototype) {
+    public static Specification<Playlist> matching(Playlist prototype) {
         List<Specification<Playlist>> specifications = new ArrayList<>();
 
         if (prototype.getId() != null) {
@@ -22,7 +22,7 @@ public class PlaylistSpecifications {
         }
 
         if (prototype.getName() != null) {
-            specifications.add(containsCaseInsensitive(Playlist_.NAME, prototype.getName()));
+            specifications.add(isEqual(Playlist_.NAME, prototype.getName()));
         }
 
         return joinSpecifications(specifications);

@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.UUID;
 
 import static br.com.murilokakazu.ec7.ftt.cefsa.domain.specifications.PlaylistSpecifications.*;
-import static br.com.murilokakazu.ec7.ftt.cefsa.domain.specifications.SpecificationsHelper.isEqual;
+import static br.com.murilokakazu.ec7.ftt.cefsa.domain.specifications.SpecificationsHelper.isFieldEqual;
 import static org.springframework.data.jpa.domain.Specification.*;
 
 @RestController
@@ -26,7 +26,7 @@ public class PlaylistRestResource {
 
     @GetMapping("/account/{id}/playlists")
     public List<Playlist> getByOwnerId(@PathVariable(value = "id") UUID ownerId) {
-        return playlistRepository.findAll(where(isEqual(Playlist_.OWNER_ID, ownerId)));
+        return playlistRepository.findAll(where(isFieldEqual(Playlist_.OWNER_ID, ownerId)));
     }
 
     @GetMapping("/playlists")

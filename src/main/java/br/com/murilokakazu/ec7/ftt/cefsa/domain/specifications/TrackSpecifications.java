@@ -15,18 +15,18 @@ public class TrackSpecifications {
         List<Specification<Track>> specifications = new ArrayList<>();
 
         if (prototype.getId() != null) {
-            specifications.add(isEqual(Track_.ID, prototype.getId()));
+            specifications.add(isFieldEqual(Track_.ID, prototype.getId()));
         }
         if (prototype.getName() != null) {
-            specifications.add(isEqual(Track_.NAME, prototype.getName()));
+            specifications.add(isFieldEqual(Track_.NAME, prototype.getName()));
         }
         if (prototype.getAlbumId() != null) {
-            specifications.add(isEqual(Track_.ALBUM_ID, prototype.getAlbumId()));
+            specifications.add(isFieldEqual(Track_.ALBUM_ID, prototype.getAlbumId()));
         }
         if (prototype.getArtistId() != null) {
-            specifications.add(isEqual(Track_.ARTIST_ID, prototype.getArtistId()));
+            specifications.add(isFieldEqual(Track_.ARTIST_ID, prototype.getArtistId()));
         }
 
-        return joinSpecifications(specifications);
+        return satisfyingAll(specifications);
     }
 }

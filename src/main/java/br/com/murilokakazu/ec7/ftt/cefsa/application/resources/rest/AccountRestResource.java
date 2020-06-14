@@ -28,8 +28,8 @@ public class AccountRestResource {
   }
 
   @GetMapping("/accounts/search")
-  public List<Account> search(@RequestParam(value = "q") String q) {
-    return accountRepository.findAll(matching(q));
+  public List<Account> search(@RequestParam(value = "q") String query) {
+    return accountRepository.findAll(matching(query));
   }
 
   @PostMapping("/account")

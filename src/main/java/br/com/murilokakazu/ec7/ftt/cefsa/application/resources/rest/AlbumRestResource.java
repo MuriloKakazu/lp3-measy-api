@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
-import static br.com.murilokakazu.ec7.ftt.cefsa.domain.specifications.SpecificationsHelper.isEqual;
+import static br.com.murilokakazu.ec7.ftt.cefsa.domain.specifications.SpecificationsHelper.isFieldEqual;
 import static org.springframework.data.jpa.domain.Specification.*;
 import static br.com.murilokakazu.ec7.ftt.cefsa.domain.specifications.AlbumSpecifications.*;
 
@@ -27,7 +27,7 @@ public class AlbumRestResource {
 
     @GetMapping("/artist/{id}/albums")
     public List<Album> getByArtistId(@PathVariable(value = "id") UUID artistId) {
-        return albumRepository.findAll(where(isEqual(Album_.ARTIST_ID, artistId)));
+        return albumRepository.findAll(where(isFieldEqual(Album_.ARTIST_ID, artistId)));
     }
 
     @GetMapping("/albums")

@@ -15,22 +15,22 @@ public class AlbumSpecifications {
         List<Specification<Album>> specifications = new ArrayList<>();
 
         if (prototype.getId() != null) {
-            specifications.add(isEqual(Album_.ID, prototype.getId()));
+            specifications.add(isFieldEqual(Album_.ID, prototype.getId()));
         }
 
         if (prototype.getArtistId() != null) {
-            specifications.add(isEqual(Album_.ARTIST_ID, prototype.getArtistId()));
+            specifications.add(isFieldEqual(Album_.ARTIST_ID, prototype.getArtistId()));
         }
 
         if (prototype.getName() != null) {
-            specifications.add(isEqual(Album_.NAME, prototype.getName()));
+            specifications.add(isFieldEqual(Album_.NAME, prototype.getName()));
         }
 
         if (prototype.getReleaseDate() != null) {
-            specifications.add(isEqual(Album_.RELEASE_DATE, prototype.getReleaseDate()));
+            specifications.add(isFieldEqual(Album_.RELEASE_DATE, prototype.getReleaseDate()));
         }
 
-        return joinSpecifications(specifications);
+        return satisfyingAll(specifications);
     }
 
 }

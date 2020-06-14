@@ -15,22 +15,22 @@ public class AccountSpecifications {
         List<Specification<Account>> specifications = new ArrayList<>();
 
         if (prototype.getId() != null) {
-            specifications.add(isEqual(Account_.ID, prototype.getId()));
+            specifications.add(isFieldEqual(Account_.ID, prototype.getId()));
         }
 
         if (prototype.getName() != null) {
-            specifications.add(isEqual(Account_.NAME, prototype.getName()));
+            specifications.add(isFieldEqual(Account_.NAME, prototype.getName()));
         }
 
         if (prototype.getEmail() != null) {
-            specifications.add(isEqual(Account_.EMAIL, prototype.getEmail()));
+            specifications.add(isFieldEqual(Account_.EMAIL, prototype.getEmail()));
         }
 
-        return joinSpecifications(specifications);
+        return satisfyingAll(specifications);
     }
 
     public static Specification<Account> matching(String query) {
-        return containsCaseInsensitive(Account_.NAME, query);
+        return fieldContains(Account_.NAME, query);
     }
 
 }

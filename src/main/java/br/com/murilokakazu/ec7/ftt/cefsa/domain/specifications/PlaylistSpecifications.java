@@ -14,17 +14,17 @@ public class PlaylistSpecifications {
         List<Specification<Playlist>> specifications = new ArrayList<>();
 
         if (prototype.getId() != null) {
-            specifications.add(isEqual(Playlist_.ID, prototype.getId()));
+            specifications.add(isFieldEqual(Playlist_.ID, prototype.getId()));
         }
 
         if (prototype.getOwnerId() != null) {
-            specifications.add(isEqual(Playlist_.OWNER_ID, prototype.getOwnerId()));
+            specifications.add(isFieldEqual(Playlist_.OWNER_ID, prototype.getOwnerId()));
         }
 
         if (prototype.getName() != null) {
-            specifications.add(isEqual(Playlist_.NAME, prototype.getName()));
+            specifications.add(isFieldEqual(Playlist_.NAME, prototype.getName()));
         }
 
-        return joinSpecifications(specifications);
+        return satisfyingAll(specifications);
     }
 }

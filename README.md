@@ -76,6 +76,23 @@ Delete:
 DELETE http://localhost:8080/v1/track/{id}
 ```
 
+We also have some custom routes, such as:
+
+Get an artist's albums:
+```
+GET http://localhost:8080/v1/artist/{id}/albums
+```
+
+Get a user's playlists:
+```
+GET http://localhost:8080/v1/account/{id}/playlists
+```
+
+Get an album's tracks:
+```
+GET http://localhost:8080/v1/album/{id}/tracks
+```
+
 ## How to run:
 
 First, make sure you have set up all the prerequisites stated at the start of the docs. Then:

@@ -17,6 +17,8 @@ import java.util.UUID;
         name = "string-array",
         typeClass = StringArrayType.class
 )
+@SQLDelete(sql = "update album set is_deleted = true where id = ?", check = ResultCheckStyle.COUNT)
+@Where(clause = "is_deleted = false")
 public class Album extends BaseEntity {
     @Column(name = "artist_id")
     private UUID artistId;

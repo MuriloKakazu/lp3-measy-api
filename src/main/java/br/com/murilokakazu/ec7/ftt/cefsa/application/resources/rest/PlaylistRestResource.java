@@ -48,4 +48,9 @@ public class PlaylistRestResource {
     public Playlist put(@RequestBody Playlist playlist) {
         return playlistRepository.save(playlist);
     }
+
+    @DeleteMapping("/playlist/{id}")
+    public void delete(@PathVariable(value = "id") UUID id) {
+        playlistRepository.deleteById(id);
+    }
 }

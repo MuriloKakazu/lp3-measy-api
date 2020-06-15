@@ -40,4 +40,9 @@ public class ArtistRestResource {
     public Artist put(@RequestBody Artist artist) {
         return artistRepository.save(artist);
     }
+
+    @DeleteMapping("/artist/{id}")
+    public void delete(@PathVariable(value = "id") UUID id) {
+        artistRepository.deleteById(id);
+    }
 }

@@ -1,12 +1,10 @@
 package br.com.murilokakazu.ec7.ftt.cefsa.domain.model;
 
 import com.vladmihalcea.hibernate.type.array.StringArrayType;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-import org.hibernate.annotations.Type;
-import org.hibernate.annotations.TypeDef;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import java.util.ArrayList;
@@ -17,6 +15,8 @@ import java.util.List;
         name = "string-array",
         typeClass = StringArrayType.class
 )
+@SQLDelete(sql = "update artist set is_deleted = true where id = ?", check = ResultCheckStyle.COUNT)
+@Where(clause = "is_deleted = false")
 public class Artist extends BaseEntity {
     @Type(type="string-array")
     private String[] genre;

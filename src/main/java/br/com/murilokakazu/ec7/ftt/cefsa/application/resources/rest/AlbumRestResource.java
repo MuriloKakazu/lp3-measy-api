@@ -49,4 +49,9 @@ public class AlbumRestResource {
     public Album put(@RequestBody Album album) {
         return albumRepository.save(album);
     }
+
+    @DeleteMapping("/album/{id}")
+    public void delete(@PathVariable(value = "id") UUID id) {
+        albumRepository.deleteById(id);
+    }
 }

@@ -1,5 +1,9 @@
 package br.com.murilokakazu.ec7.ftt.cefsa.domain.model;
 
+import org.hibernate.annotations.ResultCheckStyle;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.constraints.Max;
@@ -7,6 +11,8 @@ import javax.validation.constraints.Min;
 import java.util.UUID;
 
 @Entity
+@SQLDelete(sql = "update track set is_deleted = true where id = ?", check = ResultCheckStyle.COUNT)
+@Where(clause = "is_deleted = false")
 public class Track extends BaseEntity {
     @Column(name="artist_id")
     private UUID artistId;

@@ -1,7 +1,6 @@
 package br.com.murilokakazu.ec7.ftt.cefsa.domain.model;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.*;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@SQLDelete(sql = "update account set is_deleted = true where id = ?", check = ResultCheckStyle.COUNT)
+@Where(clause = "is_deleted = false")
 public class Account extends BaseEntity {
     @Email
     private String email;

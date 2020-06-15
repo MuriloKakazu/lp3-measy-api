@@ -41,4 +41,9 @@ public class AccountRestResource {
   public Account put(@RequestBody Account account) {
     return accountRepository.save(account);
   }
+
+  @DeleteMapping("/account/{id}")
+  public void delete(@PathVariable(value = "id") UUID id) {
+    accountRepository.deleteById(id);
+  }
 }

@@ -48,4 +48,9 @@ public class TrackRestResource {
     public Track put(@RequestBody Track track) {
         return trackRepository.save(track);
     }
+
+    @DeleteMapping("/track/{id}")
+    public void delete(@PathVariable(value = "id") UUID id) {
+        trackRepository.deleteById(id);
+    }
 }

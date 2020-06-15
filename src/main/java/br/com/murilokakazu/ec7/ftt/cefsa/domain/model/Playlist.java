@@ -1,11 +1,17 @@
 package br.com.murilokakazu.ec7.ftt.cefsa.domain.model;
 
+import org.hibernate.annotations.ResultCheckStyle;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 @Entity
+@SQLDelete(sql = "update playlist set is_deleted = true where id = ?", check = ResultCheckStyle.COUNT)
+@Where(clause = "is_deleted = false")
 public class Playlist extends BaseEntity {
     @Column(name="owner_id")
     private UUID ownerId;

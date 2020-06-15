@@ -26,6 +26,9 @@ public class TrackSpecifications {
         if (prototype.getArtistId() != null) {
             specifications.add(isFieldEqual(Track_.ARTIST_ID, prototype.getArtistId()));
         }
+        if (prototype.getReleaseDate() != null) {
+            specifications.add(isFieldEqual(Track_.RELEASE_DATE, prototype.getReleaseDate()));
+        }
 
         return satisfyingAll(specifications);
     }

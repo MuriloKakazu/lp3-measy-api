@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Entity
@@ -19,6 +20,9 @@ public class Track extends BaseEntity {
 
     @Column(name="album_id")
     private UUID albumId;
+
+    @Column(name="release_date")
+    private OffsetDateTime releaseDate;
 
     @Min(0)
     @Max(100)
@@ -46,5 +50,13 @@ public class Track extends BaseEntity {
 
     public void setPopularity(Integer popularity) {
         this.popularity = popularity;
+    }
+
+    public OffsetDateTime getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(OffsetDateTime releaseDate) {
+        this.releaseDate = releaseDate;
     }
 }

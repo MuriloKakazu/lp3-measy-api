@@ -31,6 +31,7 @@ create table track (
     album_id uuid not null references album(id) on delete cascade,
     name character varying not null,
     popularity integer not null default 0,
+    release_date timestamp with time zone,
     is_deleted boolean not null default false
 );
 

@@ -35,6 +35,8 @@ dependencies {
     compile group: 'com.vladmihalcea', name: 'hibernate-types-52', version: '2.4.3'
     compile group: 'javax.xml.bind', name: 'jaxb-api'
     compile group: 'javax.validation', name: 'validation-api'
+    compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+    compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
 
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }

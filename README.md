@@ -15,9 +15,11 @@ Measy API is a music-related API for a CE College Project. It features the follo
 
 This is simply a Spring Boot app that reads and writes data from/to a PostgreSQL Database running in a Docker container
 
-### Routes
+## Routes
 
-We just show examples with the Track entity below, but all entities have equivalent routes. 
+The docs can be found in the swagger ui at: http://localhost:8080/swagger-ui.html when you run the app.
+
+To sum it up, we just show examples with the Track entity below, but all entities have equivalent routes. 
 Also, we enforce the following standards:
 
  - All date/datetime fields must follow the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) international standard.

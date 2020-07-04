@@ -13,6 +13,7 @@ import java.util.UUID;
 import static br.com.murilokakazu.ec7.ftt.cefsa.domain.specifications.AccountSpecifications.*;
 import static org.springframework.http.ResponseEntity.ok;
 
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/v1")
 public class AccountRestResource {

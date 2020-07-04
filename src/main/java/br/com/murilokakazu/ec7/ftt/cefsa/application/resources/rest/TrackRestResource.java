@@ -17,6 +17,7 @@ import static br.com.murilokakazu.ec7.ftt.cefsa.domain.specifications.TrackSpeci
 import static org.springframework.data.jpa.domain.Specification.*;
 import static org.springframework.http.ResponseEntity.ok;
 
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/v1")
 public class TrackRestResource {

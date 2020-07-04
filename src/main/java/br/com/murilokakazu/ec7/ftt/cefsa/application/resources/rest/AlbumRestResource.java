@@ -17,6 +17,7 @@ import static org.springframework.data.jpa.domain.Specification.*;
 import static br.com.murilokakazu.ec7.ftt.cefsa.domain.specifications.AlbumSpecifications.*;
 import static org.springframework.http.ResponseEntity.ok;
 
+@CrossOrigin
 @RestController
 @RequestMapping(path = "/v1")
 public class AlbumRestResource {
